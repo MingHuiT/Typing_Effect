@@ -1,0 +1,54 @@
+/*Universal Selector*/
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+.text{
+    position: relative;
+    color: #fff;
+    font-size: 62px;
+    letter-spacing: 3px;    
+    width: 65px;
+    white-space: nowrap;
+    overflow: hidden;
+    /*Variable*/
+    --count: 6;
+    animation: typing 1.5s steps(var(--count)) forwards;
+}
+
+/*Inserts something after the content of each selected element(s)*/
+.text::after{
+    content: "";
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0%,49%{
+        opacity: 0;
+    }
+    50%,100%{
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    0%{
+        width: 0;
+    }
+    100%{
+    /*Calculate the width*/
+        width: calc(var(--count) * 62px);
+    }
+}
